@@ -1,51 +1,35 @@
-.Trash/
-.trash/
-.DS_Store
-**/.obsidian/
-.postgres
-
-.idea
-.nuxt
-.temp
-.vite-inspect
-*.local
+# Logs
+logs
 *.log
-components.d.ts
-**/typed-router.d.ts
-dist
-out/
+pnpm-debug.log*
+
 node_modules
+dist
+*.local
 .eslintcache
-**/.cache/**
-**/.vitepress/docsMetadata.json
-**/.vitepress/cache/
-**/tsconfig.tsbuildinfo
 
-**/.netlify/*
-**/.netlify/functions-serve/*
+# Editor directories and files
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
-coverage/
-**/temp/
+# docs:generated content
+.contentlayer
+.content-collections
+.source
 
-**/public/assets/js/*
-**/public/assets/live2d/models/*
-**/public/assets/vrm/models/*
-packages/stage-ui/public/assets/fonts/
-apps/stage-tamagotchi/public/assets/fonts/
-apps/stage-tamagotchi-tauri/public/assets/fonts/
-apps/stage-web/public/assets/fonts/
+# docs:test & build
+coverage
+.next
+out
+build
+*.tsbuildinfo
 
-*.pcm
-*.wav
-*.ogg
-*.mp3
-
-twitter-session.json
-
-# Make it easy for devenv users to override their local environment.
-# See: https://github.com/moeru-ai/airi/pull/110#discussion_r2024378953
-.direnv
-.pre-commit-config.yaml
-.envrc
-.devenv*
-devenv.*
+# docs:others
+.env*.local
+.vercel
+next-env.d.ts
