@@ -52,7 +52,6 @@
     "eslint": "^9.23.0",
     "oxlint": "^0.16.4",
     "rolldown": "1.0.0-beta.7",
-    "rolldown-plugin-types": "^0.0.0",
     "typescript": "^5.8.2",
     "unplugin-isolated-decl": "^0.13.6"
   }
