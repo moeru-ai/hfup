@@ -1,0 +1,59 @@
+{
+  "name": "hfup",
+  "type": "module",
+  "version": "0.4.19",
+  "description": "A collection of tools to help you deploy, bundle HuggingFace Spaces and related assets with ease.",
+  "keywords": [],
+  "packageManager": "pnpm@10.7.1",
+  "author": "Moeru AI",
+  "license": "MIT",
+  "homepage": "https://github.com/moeru-ai/hfup",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moeru-ai/hfup.git"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/vite/index.d.ts",
+      "import": "./dist/vite/index.mjs",
+      "require": "./dist/vite/index.cjs"
+    },
+    "./vite": {
+      "types": "./dist/vite/index.d.ts",
+      "import": "./dist/vite/index.mjs",
+      "node": "./dist/vite/index.cjs"
+    }
+  },
+  "main": "./dist/vite/index.cjs",
+  "module": "./dist/vite/index.mjs",
+  "types": "./dist/vite/index.d.ts",
+  "files": [
+    "README.md",
+    "dist",
+    "package.json"
+  ],
+  "scripts": {
+    "build": "rolldown -c",
+    "typecheck": "tsc --noEmit",
+    "lint": "oxlint"
+  },
+  "dependencies": {
+    "defu": "^6.1.4",
+    "gray-matter": "^4.0.3",
+    "vite": "^6.2.4"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^4.11.0",
+    "@importantimport/tsconfig": "^1.0.0-beta.2",
+    "@types/node": "^22.14.0",
+    "builtin-modules": "^5.0.0",
+    "bumpp": "^10.1.0",
+    "changelogithub": "^13.13.0",
+    "eslint": "^9.23.0",
+    "oxlint": "^0.16.4",
+    "rolldown": "1.0.0-beta.7",
+    "rolldown-plugin-types": "^0.0.0",
+    "typescript": "^5.8.2",
+    "unplugin-isolated-decl": "^0.13.6"
+  }
+}
