@@ -4,7 +4,7 @@
   "version": "0.5.0",
   "description": "A collection of tools to help you deploy, bundle HuggingFace Spaces and related assets with ease.",
   "keywords": [],
-  "packageManager": "pnpm@10.7.1",
+  "packageManager": "pnpm@10.8.1",
   "author": "Moeru AI",
   "license": "MIT",
   "homepage": "https://github.com/moeru-ai/hfup",
@@ -40,19 +40,19 @@
   "dependencies": {
     "defu": "^6.1.4",
     "gray-matter": "^4.0.3",
-    "vite": "^6.2.5"
+    "vite": "^6.3.2"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^4.11.0",
+    "@antfu/eslint-config": "^4.12.0",
     "@importantimport/tsconfig": "^1.0.0-beta.2",
-    "@types/node": "^22.14.0",
+    "@types/node": "^22.14.1",
     "builtin-modules": "^5.0.0",
     "bumpp": "^10.1.0",
     "changelogithub": "^13.13.0",
-    "eslint": "^9.23.0",
-    "oxlint": "^0.16.4",
+    "eslint": "^9.25.0",
+    "oxlint": "^0.16.6",
     "rolldown": "1.0.0-beta.7",
-    "typescript": "^5.8.2",
-    "unplugin-isolated-decl": "^0.13.6"
+    "typescript": "^5.8.3",
+    "unplugin-isolated-decl": "^0.13.7"
   }
 }
