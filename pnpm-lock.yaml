@@ -43,7 +43,7 @@ importers:
         specifier: ^0.16.6
         version: 0.16.6
       rolldown:
-        specifier: 1.0.0-beta.7
+        specifier: ^1.0.0-beta.7
         version: 1.0.0-beta.7(typescript@5.8.3)
       typescript:
         specifier: ^5.8.3
