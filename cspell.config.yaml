@@ -11,6 +11,7 @@ words:
   - Moeru
   - oxlint
   - rolldown
+  - taze
   - unplugin
 ignoreWords: []
 import: []
