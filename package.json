@@ -14,19 +14,19 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/vite/index.d.ts",
-      "import": "./dist/vite/index.mjs",
-      "require": "./dist/vite/index.cjs"
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.mjs"
     },
     "./vite": {
-      "types": "./dist/vite/index.d.ts",
+      "types": "./dist/vite/index.d.mts",
       "import": "./dist/vite/index.mjs",
-      "node": "./dist/vite/index.cjs"
+      "default": "./dist/vite/index.mjs"
     }
   },
-  "main": "./dist/vite/index.cjs",
-  "module": "./dist/vite/index.mjs",
-  "types": "./dist/vite/index.d.ts",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
   "files": [
     "README.md",
     "dist",
@@ -36,6 +36,7 @@
     "build": "rolldown -c",
     "typecheck": "tsc --noEmit",
     "lint": "oxlint",
+    "attw": "attw --pack . --profile esm-only --ignore-rules cjs-resolves-to-esm",
     "up": "taze -w -r -I -f && pnpm prune && pnpm dedupe"
   },
   "dependencies": {
@@ -46,15 +47,15 @@
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.18.2",
     "@importantimport/tsconfig": "^1.0.0-beta.2",
-    "@types/node": "^22.15.31",
+    "@types/node": "^24.0.1",
     "builtin-modules": "^5.0.0",
     "bumpp": "^10.1.1",
     "changelogithub": "^13.15.0",
-    "oxlint": "^0.16.12",
+    "oxlint": "^1.1.0",
     "rolldown": "^1.0.0-beta.16",
     "taze": "^19.1.0",
     "typescript": "^5.8.3",
-    "unplugin-isolated-decl": "^0.13.11"
+    "unplugin-isolated-decl": "^0.14.3"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

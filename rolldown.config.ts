@@ -4,15 +4,42 @@ import UnpluginIsolatedDecl from 'unplugin-isolated-decl/rolldown'
 
 export default defineConfig([
   {
+    input: 'src/index.ts',
+    output: [
+      {
+        file: 'dist/index.mjs',
+        format: 'esm',
+      }
+    ],
+    external: [
+      ...builtins,
+      'vite',
+      'defu',
+      'gray-matter',
+    ]
+  },
+  {
+    input: 'src/index.ts',
+    plugins: [UnpluginIsolatedDecl()],
+    output: [
+      {
+        file: 'dist/index.d.mts',
+        format: 'esm',
+      },
+    ],
+    external: [
+      ...builtins,
+      'vite',
+      'defu',
+      'gray-matter',
+    ]
+  },
+  {
     input: 'src/vite/index.ts',
     output: [
       {
         file: 'dist/vite/index.mjs',
         format: 'esm',
-      },
-      {
-        file: 'dist/vite/index.cjs',
-        format: 'commonjs',
       },
     ],
     external: [
@@ -27,7 +54,7 @@ export default defineConfig([
     plugins: [UnpluginIsolatedDecl()],
     output: [
       {
-        file: 'dist/vite/index.d.ts',
+        file: 'dist/vite/index.d.mts',
         format: 'esm',
       },
     ],
