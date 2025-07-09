@@ -12,6 +12,8 @@ words:
   - Moeru
   - oxlint
   - rolldown
+  - rspack
+  - spacecard
   - taze
   - unplugin
 ignoreWords: []

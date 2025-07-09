@@ -1,4 +1,4 @@
-import type { Plugin, ResolvedConfig } from 'vite'
+import { cwd } from 'node:process'
 import type { License, SpaceConfiguration } from './types'
 
 import { readFile } from 'node:fs/promises'
@@ -9,14 +9,16 @@ import grayMatter from 'gray-matter'
 import { exists } from '../../utils/fs'
 import { licenseValues } from './types'
 
+import { createUnplugin, type UnpluginInstance } from 'unplugin'
+
 // Please find the documentation at:
 // Spaces Configuration Reference
 // https://huggingface.co/docs/hub/spaces-config-reference
 // https://huggingface.co/docs/hub/model-cards#model-card-metadata
-export function SpaceCard(configuration?: SpaceConfiguration): Plugin {
-  let _config: ResolvedConfig
-  const _configuration = defu<SpaceConfiguration, SpaceConfiguration[]>(
-    configuration,
+export const SpaceCard: UnpluginInstance<SpaceConfiguration & { root?: string } | undefined, false>
+  = createUnplugin((configurations = { root: cwd() }) => {
+    const _configuration = defu<SpaceConfiguration, SpaceConfiguration[]>(
+    configurations,
     {
       emoji: '🚀',
       sdk: 'static',
@@ -24,27 +26,26 @@ export function SpaceCard(configuration?: SpaceConfiguration): Plugin {
       license: 'unknown',
     },
   )
+
   let packageJSON: Record<string, any> = {}
   let readme = ''
 
   return {
-    name: 'huggingspace:readme',
-    async configResolved(config) {
-      _config = config
-
-      const rootPackageJSONPath = join(_config.root, 'package.json')
+    name: 'hfup:spacecard-readme',
+     async buildStart() {
+      const rootPackageJSONPath = join(configurations.root, 'package.json')
       if (await exists(rootPackageJSONPath)) {
         const rootPackageJSONContent = await readFile(rootPackageJSONPath, 'utf-8')
         packageJSON = JSON.parse(rootPackageJSONContent)
       }
 
       const rootReadmePaths: string[] = [
-        join(_config.root, 'README.md'),
-        join(_config.root, 'readme.md'),
-        join(_config.root, 'README.markdown'),
-        join(_config.root, 'readme.markdown'),
-        join(_config.root, 'README'),
-        join(_config.root, 'readme'),
+        join(configurations.root, 'README.md'),
+        join(configurations.root, 'readme.md'),
+        join(configurations.root, 'README.markdown'),
+        join(configurations.root, 'readme.markdown'),
+        join(configurations.root, 'README'),
+        join(configurations.root, 'readme'),
       ]
       for (const rootReadmePath of rootReadmePaths) {
         if (await exists(rootReadmePath)) {
@@ -89,7 +90,7 @@ export function SpaceCard(configuration?: SpaceConfiguration): Plugin {
         throw new Error('short_description must be less or equal to 60 characters')
       }
     },
-    async generateBundle() {
+    buildEnd() {
       if (readme == null) {
         readme = `# ${_configuration.title}`
       }
@@ -99,6 +100,6 @@ export function SpaceCard(configuration?: SpaceConfiguration): Plugin {
         fileName: 'README.md',
         source: grayMatter.stringify({ content: `\n${readme}` }, _configuration),
       })
-    },
+    }
   }
-}
+  })

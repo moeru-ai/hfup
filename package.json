@@ -18,11 +18,13 @@
       "import": "./dist/index.mjs",
       "default": "./dist/index.mjs"
     },
-    "./vite": {
-      "types": "./dist/vite/index.d.mts",
-      "import": "./dist/vite/index.mjs",
-      "default": "./dist/vite/index.mjs"
-    }
+    "./vite": "./dist/vite.mjs",
+    "./webpack": "./dist/webpack.mjs",
+    "./rspack": "./dist/rspack.mjs",
+    "./rollup": "./dist/rollup.mjs",
+    "./rolldown": "./dist/rolldown.mjs",
+    "./esbuild": "./dist/esbuild.mjs",
+    "./*": "./*"
   },
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
@@ -42,7 +44,7 @@
   "dependencies": {
     "defu": "^6.1.4",
     "gray-matter": "^4.0.3",
-    "vite": "^6.3.5"
+    "unplugin": "^2.3.5"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.18.2",
