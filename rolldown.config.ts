@@ -16,6 +16,7 @@ function entryFor(integration: 'esbuild' | 'rolldown' | 'rollup' | 'rspack' | 'v
         ...builtins,
         'defu',
         'gray-matter',
+        'unplugin'
       ]
     },
     {
@@ -31,6 +32,7 @@ function entryFor(integration: 'esbuild' | 'rolldown' | 'rollup' | 'rspack' | 'v
         ...builtins,
         'defu',
         'gray-matter',
+        'unplugin'
       ]
     },
   ]
