@@ -4,7 +4,10 @@
  * @module
  */
 
-import { SpaceCard, LFS } from './index'
+import { SpaceCard as SpaceCardImported, LFS as LFSImported } from './index'
+
+const SpaceCard = SpaceCardImported.rspack as typeof SpaceCardImported.rspack
+const LFS = LFSImported.rspack as typeof LFSImported.rspack
 
 /**
  * Rspack plugin
@@ -19,8 +22,8 @@ import { SpaceCard, LFS } from './index'
  * ```
  */
 const exports = {
-  SpaceCard: SpaceCard.rspack as typeof SpaceCard.rspack,
-  LFS: LFS.rspack as typeof LFS.rspack,
+  SpaceCard: SpaceCard as typeof SpaceCardImported.rspack,
+  LFS: LFS as typeof LFSImported.rspack,
 }
 export { SpaceCard, LFS }
 export { exports as 'module.exports' }

@@ -4,7 +4,10 @@
  * @module
  */
 
-import { SpaceCard, LFS } from './index'
+import { SpaceCard as SpaceCardImported, LFS as LFSImported } from './index'
+
+const SpaceCard = SpaceCardImported.esbuild as typeof SpaceCardImported.esbuild
+const LFS = LFSImported.esbuild as typeof LFSImported.esbuild
 
 /**
  * Esbuild plugin
@@ -20,8 +23,8 @@ import { SpaceCard, LFS } from './index'
  * ```
  */
 const exports = {
-  SpaceCard: SpaceCard.esbuild as typeof SpaceCard.esbuild,
-  LFS: LFS.esbuild as typeof LFS.esbuild,
+  SpaceCard: SpaceCard as typeof SpaceCardImported.esbuild,
+  LFS: LFS as typeof LFSImported.esbuild,
 }
 export { SpaceCard, LFS }
 export { exports as 'module.exports' }

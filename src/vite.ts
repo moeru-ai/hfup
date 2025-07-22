@@ -4,7 +4,10 @@
  * @module
  */
 
-import { SpaceCard, LFS } from './index'
+import { SpaceCard as SpaceCardImported, LFS as LFSImported } from './index'
+
+const SpaceCard = SpaceCardImported.vite as typeof SpaceCardImported.vite
+const LFS = LFSImported.vite as typeof LFSImported.vite
 
 /**
  * Vite plugin
@@ -20,9 +23,10 @@ import { SpaceCard, LFS } from './index'
  * ```
  */
 const exports = {
-  SpaceCard: SpaceCard.vite as typeof SpaceCard.vite,
-  LFS: LFS.vite as typeof LFS.vite,
+  SpaceCard: SpaceCard as typeof SpaceCardImported.vite,
+  LFS: LFS as typeof LFSImported.vite,
 }
+
 export { SpaceCard, LFS }
 export { exports as 'module.exports' }
 export type * from './plugins/lfs'

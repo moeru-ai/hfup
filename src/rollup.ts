@@ -4,7 +4,10 @@
  * @module
  */
 
-import { SpaceCard, LFS } from './index'
+import { SpaceCard as SpaceCardImported, LFS as LFSImported } from './index'
+
+const SpaceCard = SpaceCardImported.rollup as typeof SpaceCardImported.rollup
+const LFS = LFSImported.rollup as typeof LFSImported.rollup
 
 /**
  * Rollup plugin
@@ -20,8 +23,8 @@ import { SpaceCard, LFS } from './index'
  * ```
  */
 const exports = {
-  SpaceCard: SpaceCard.rollup as typeof SpaceCard.rollup,
-  LFS: LFS.rollup as typeof LFS.rollup,
+  SpaceCard: SpaceCard as typeof SpaceCardImported.rollup,
+  LFS: LFS as typeof LFSImported.rollup,
 }
 export { SpaceCard, LFS }
 export { exports as 'module.exports' }
