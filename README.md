@@ -2,6 +2,9 @@
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
+[![bundle][bundle-src]][bundle-href]
+[![JSDocs][jsdocs-src]][jsdocs-href]
+[![License][license-src]][license-href]
 
 A collection of tools to help you deploy, bundle HuggingFace Spaces and related assets with ease.
 
@@ -239,3 +242,9 @@ thumbnail: https://raw.githubusercontent.com/moeru-ai/airi/refs/heads/main/packa
 [npm-version-href]: https://npmjs.com/package/hfup
 [npm-downloads-src]: https://img.shields.io/npm/dm/hfup?style=flat&colorA=18181B&colorB=f7d031
 [npm-downloads-href]: https://npmjs.com/package/hfup
+[bundle-src]: https://img.shields.io/bundlephobia/minzip/hfup?style=flat&colorA=18181B&colorB=f7d031&label=minzip
+[bundle-href]: https://bundlephobia.com/result?p=hfup
+[license-src]: https://img.shields.io/github/license/moeru-ai/hfup.svg?style=flat&colorA=18181B&colorB=f7d031
+[license-href]: https://github.com/moeru-ai/hfup/blob/main/LICENSE
+[jsdocs-src]: https://img.shields.io/badge/jsdocs-reference-080f12?style=flat&colorA=18181B&colorB=f7d031
+[jsdocs-href]: https://www.jsdocs.io/package/hfup
