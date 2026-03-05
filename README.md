@@ -25,8 +25,16 @@ npm i hfup -D
 
 `hfup` can generate HuggingFace artifacts directly, without bundler hooks.
 
+Quick start:
+
 ```shell
-hfup generate --root . --outDir ./dist
+pnpm add -D hfup
+```
+
+Create `hfup.config.json` in your project root:
+
+```shell
+npx hfup generate --root . --outDir ./dist
 ```
 
 This command writes:
@@ -89,6 +97,57 @@ Optional flags:
 - `--with-model-card`: generate only `README.md`
 
 `--with-space-card` and `--with-model-card` are mutually exclusive because both write `README.md`.
+
+Generate model card only:
+
+```shell
+npx hfup generate --root . --outDir . --with-model-card
+```
+
+Generate space card only:
+
+```shell
+npx hfup generate --root . --outDir . --with-space-card
+```
+
+Generate only LFS:
+
+```shell
+npx hfup generate --root . --outDir . --with-lfs
+```
+
+## JSON Schema in Editors
+
+Use the published JSON schema so non-TypeScript projects (Python/C/etc.) still get IntelliSense.
+
+Inline schema in `hfup.config.json`:
+
+```json
+{
+  "$schema": "https://unpkg.com/hfup@latest/dist/json-schema.json"
+}
+```
+
+Or pin a version:
+
+```json
+{
+  "$schema": "https://unpkg.com/hfup@1.0.0/dist/json-schema.json"
+}
+```
+
+If you cannot use `$schema` inline, configure VS Code:
+
+```json
+{
+  "json.schemas": [
+    {
+      "fileMatch": ["hfup.config.json"],
+      "url": "https://unpkg.com/hfup@latest/dist/json-schema.json"
+    }
+  ]
+}
+```
 
 ## Model Card Plugin
 
