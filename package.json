@@ -1,7 +1,7 @@
 {
   "name": "hfup",
   "type": "module",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A collection of tools to help you deploy, bundle HuggingFace Spaces and related assets with ease.",
   "keywords": [],
   "packageManager": "pnpm@10.30.3",
