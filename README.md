@@ -21,6 +21,98 @@ yarn i hfup -D
 npm i hfup -D
 ```
 
+## CLI
+
+`hfup` can generate HuggingFace artifacts directly, without bundler hooks.
+
+```shell
+hfup generate --root . --outDir ./dist
+```
+
+This command writes:
+
+- `.gitattributes` (LFS patterns)
+- `README.md` (Space or Model card front-matter + README content)
+
+You can also use a config file (`hfup.config.json`, `hfup.config.mjs`, `hfup.config.js`, `hfup.config.cjs`) in your project root or pass one explicitly via `--config`.
+
+```json
+{
+  "$schema": "https://unpkg.com/hfup@latest/dist/json-schema.json",
+  "lfs": {
+    "withDefault": true,
+    "extraGlobs": ["*.gguf"],
+    "extraAttributes": ["data/**/*.bin filter=lfs diff=lfs merge=lfs -text"]
+  },
+  "spaceCard": {
+    "title": "My Space",
+    "license": "mit",
+    "emoji": "🚀",
+    "models": ["openai-community/gpt2"]
+  },
+  "modelCard": {
+    "language": ["en"],
+    "library_name": "transformers",
+    "pipeline_tag": "text-generation",
+    "base_model": "meta-llama/Llama-3.2-1B",
+    "license": "mit",
+    "tags": ["llm", "instruction-tuned"]
+  }
+}
+```
+
+If you pin schema by version:
+
+```json
+{
+  "$schema": "https://unpkg.com/hfup@1.0.0/dist/json-schema.json"
+}
+```
+
+For projects that cannot use `$schema` inline, add a VS Code mapping in `.vscode/settings.json`:
+
+```json
+{
+  "json.schemas": [
+    {
+      "fileMatch": ["hfup.config.json"],
+      "url": "https://unpkg.com/hfup@latest/dist/json-schema.json"
+    }
+  ]
+}
+```
+
+Optional flags:
+
+- `--with-lfs`: generate only `.gitattributes`
+- `--with-space-card`: generate only `README.md`
+- `--with-model-card`: generate only `README.md`
+
+`--with-space-card` and `--with-model-card` are mutually exclusive because both write `README.md`.
+
+## Model Card Plugin
+
+You can generate a Hugging Face model card from bundler hooks too:
+
+```ts
+// vite.config.ts
+import { defineConfig } from 'vite'
+import { LFS, ModelCard } from 'hfup/vite'
+
+export default defineConfig({
+  plugins: [
+    LFS(),
+    ModelCard({
+      language: ['en'],
+      library_name: 'transformers',
+      pipeline_tag: 'text-generation',
+      base_model: 'meta-llama/Llama-3.2-1B',
+      license: 'mit',
+    }),
+  ],
+})
+```
+
 <details>
 <summary>Vite</summary><br/>
 

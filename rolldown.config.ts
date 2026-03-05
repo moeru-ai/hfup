@@ -45,4 +45,34 @@ export default defineConfig([
   ...entryFor('rspack'),
   ...entryFor('vite'),
   ...entryFor('webpack'),
+  {
+    input: 'src/cli.ts',
+    output: [
+      {
+        file: 'dist/cli.mjs',
+        format: 'esm',
+      },
+    ],
+    external: [
+      ...builtins,
+      'defu',
+      'gray-matter',
+      'unplugin',
+    ],
+  },
+  {
+    input: 'src/schema.ts',
+    output: [
+      {
+        file: 'dist/schema.mjs',
+        format: 'esm',
+      },
+    ],
+    external: [
+      ...builtins,
+      'defu',
+      'gray-matter',
+      'unplugin',
+    ],
+  },
 ])

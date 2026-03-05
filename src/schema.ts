@@ -1,0 +1,121 @@
+import { baseModelRelationValues } from './plugins/model-card/types'
+import { colorFromValues, colorToValues, headerValues, licenseValues, sdkValues, suggestedStorageValues } from './plugins/space-card/types'
+
+export const hfupConfigSchema: Record<string, unknown> = {
+  $schema: 'https://json-schema.org/draft/2020-12/schema',
+  $id: 'https://unpkg.com/hfup@latest/dist/json-schema.json',
+  title: 'hfup config',
+  type: 'object',
+  additionalProperties: false,
+  properties: {
+    lfs: {
+      type: 'object',
+      additionalProperties: false,
+      properties: {
+        withDefault: { type: 'boolean', default: true },
+        extraGlobs: {
+          type: 'array',
+          items: { type: 'string' },
+          default: [],
+        },
+        extraAttributes: {
+          type: 'array',
+          items: { type: 'string' },
+          default: [],
+        },
+      },
+    },
+    spaceCard: {
+      type: 'object',
+      additionalProperties: false,
+      properties: {
+        title: { type: 'string' },
+        license: {
+          oneOf: [
+            { type: 'string', enum: licenseValues },
+            {
+              type: 'array',
+              items: { type: 'string', enum: licenseValues },
+            },
+          ],
+        },
+        emoji: { type: 'string' },
+        colorFrom: { type: 'string', enum: colorFromValues },
+        colorTo: { type: 'string', enum: colorToValues },
+        sdk: { type: 'string', enum: sdkValues },
+        python_version: { type: 'string' },
+        sdk_version: { type: 'string' },
+        suggested_hardware: { type: 'string' },
+        suggested_storage: { type: 'string', enum: suggestedStorageValues },
+        app_file: { type: 'string' },
+        app_port: { type: 'number' },
+        base_path: { type: 'string' },
+        fullWidth: { type: 'boolean' },
+        header: { type: 'string', enum: headerValues },
+        short_description: { type: 'string', maxLength: 60 },
+        models: { type: 'array', items: { type: 'string' } },
+        datasets: { type: 'array', items: { type: 'string' } },
+        tags: { type: 'array', items: { type: 'string' } },
+        thumbnail: { type: 'string' },
+        pinned: { type: 'boolean' },
+        hf_oauth: { type: 'boolean' },
+        hf_oauth_scopes: { type: 'array', items: { type: 'string' } },
+        hf_oauth_expiration_minutes: { type: 'number' },
+        disable_embedding: { type: 'boolean' },
+        startup_duration_timeout: { type: 'string' },
+        custom_headers: {
+          type: 'object',
+          additionalProperties: { type: 'string' },
+        },
+        preload_from_hub: { type: 'array', items: { type: 'string' } },
+      },
+    },
+    modelCard: {
+      type: 'object',
+      additionalProperties: false,
+      properties: {
+        title: { type: 'string' },
+        language: { type: 'array', items: { type: 'string' } },
+        tags: { type: 'array', items: { type: 'string' } },
+        license: { type: 'string', enum: licenseValues },
+        license_name: { type: 'string' },
+        license_link: { type: 'string' },
+        datasets: { type: 'array', items: { type: 'string' } },
+        metrics: { type: 'array', items: { type: 'string' } },
+        pipeline_tag: { type: 'string' },
+        library_name: { type: 'string' },
+        base_model: {
+          oneOf: [
+            { type: 'string' },
+            { type: 'array', items: { type: 'string' } },
+          ],
+        },
+        base_model_relation: { type: 'string', enum: baseModelRelationValues },
+        new_version: { type: 'string' },
+        thumbnail: { type: 'string' },
+        model_name: { type: 'string' },
+        body: { type: 'string' },
+        sections: {
+          type: 'object',
+          additionalProperties: false,
+          properties: {
+            model_description: { type: 'string' },
+            intended_uses: { type: 'string' },
+            limitations: { type: 'string' },
+            training_data: { type: 'string' },
+            evaluation: { type: 'string' },
+            environmental_impact: { type: 'string' },
+            citation: { type: 'string' },
+            model_card_authors: { type: 'string' },
+            model_card_contact: { type: 'string' },
+            more_information: { type: 'string' },
+          },
+        },
+        metadata: {
+          type: 'object',
+          additionalProperties: true,
+        },
+      },
+    },
+  },
+}

@@ -18,6 +18,9 @@
       "import": "./dist/index.mjs",
       "default": "./dist/index.mjs"
     },
+    "./cli": "./dist/cli.mjs",
+    "./schema": "./dist/schema.mjs",
+    "./json-schema.json": "./dist/json-schema.json",
     "./vite": "./dist/vite.mjs",
     "./webpack": "./dist/webpack.mjs",
     "./rspack": "./dist/rspack.mjs",
@@ -28,6 +31,9 @@
   },
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
+  "bin": {
+    "hfup": "./dist/cli.mjs"
+  },
   "types": "./dist/index.d.mts",
   "files": [
     "README.md",
@@ -35,7 +41,7 @@
     "package.json"
   ],
   "scripts": {
-    "build": "rolldown -c",
+    "build": "rolldown -c && node scripts/write-schema.mjs",
     "typecheck": "tsc --noEmit",
     "lint": "oxlint",
     "attw": "attw --pack . --profile esm-only --ignore-rules cjs-resolves-to-esm",
