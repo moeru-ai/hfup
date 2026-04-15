@@ -125,14 +125,14 @@ async function main() {
 
   if (shouldGenerateSpaceCard) {
     const spaceCardContent = await generateSpaceCardReadme({
-      ...(config.spaceCard ?? {}),
+      ...config.spaceCard,
       root,
     })
     writes.push(writeFile(join(outDir, 'README.md'), spaceCardContent, 'utf-8'))
   }
   else if (shouldGenerateModelCard) {
     const modelCardContent = await generateModelCardReadme({
-      ...(config.modelCard ?? {}),
+      ...config.modelCard,
       root,
     })
     writes.push(writeFile(join(outDir, 'README.md'), modelCardContent, 'utf-8'))

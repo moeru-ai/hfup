@@ -4,7 +4,7 @@
   "version": "1.0.3",
   "description": "A collection of tools to help you deploy, bundle HuggingFace Spaces and related assets with ease.",
   "keywords": [],
-  "packageManager": "pnpm@10.30.3",
+  "packageManager": "pnpm@10.33.0",
   "author": "Moeru AI",
   "license": "MIT",
   "homepage": "https://github.com/moeru-ai/hfup",
@@ -49,21 +49,21 @@
     "up": "taze -w -r -I -f && pnpm prune && pnpm dedupe"
   },
   "dependencies": {
-    "defu": "^6.1.4",
+    "defu": "^6.1.7",
     "gray-matter": "^4.0.3",
-    "unplugin": "^2.3.11"
+    "unplugin": "^3.0.0"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.18.2",
     "@importantimport/tsconfig": "^1.0.0-beta.2",
-    "@types/node": "^24.11.0",
-    "builtin-modules": "^5.0.0",
-    "bumpp": "^10.4.1",
-    "changelogithub": "^13.16.1",
-    "oxlint": "^1.51.0",
-    "rolldown": "^1.0.0-rc.7",
-    "taze": "^19.10.0",
-    "typescript": "^5.9.3",
+    "@types/node": "^25.6.0",
+    "builtin-modules": "^5.1.0",
+    "bumpp": "^11.0.1",
+    "changelogithub": "^14.0.0",
+    "oxlint": "^1.60.0",
+    "rolldown": "^1.0.0-rc.15",
+    "taze": "^19.11.0",
+    "typescript": "^6.0.2",
     "unplugin-isolated-decl": "^0.15.7"
   },
   "pnpm": {
